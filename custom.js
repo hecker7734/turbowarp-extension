@@ -75,6 +75,17 @@ class morestuffExtension {
             },
           }
         },
+        {
+          opcode: 'LowerCase',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'String.LowerCase[ONE]',
+          arguments: {
+            ONE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ' '
+            },
+          }
+        },
       ]
     };
   }
@@ -102,7 +113,10 @@ class morestuffExtension {
     return Math.pow(args.ONE,args.TWO);
   }
   UpperCase(args){
-    return args.ONE.toUpperCase()
+    return args.ONE.toUpperCase();
+  }
+  LowerCase(args){
+    return args.ONE.toLowerCase();
   }
 }
 Scratch.extensions.register(new morestuffExtension());
