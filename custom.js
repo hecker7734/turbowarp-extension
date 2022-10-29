@@ -41,11 +41,11 @@ class morestuffExtension {
           arguments: {
             ONE: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'Root'
+              defaultValue: '2'
             },
             TWO: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'VALUE'
+              defaultValue: '2'
             }
           }
         },
@@ -59,7 +59,7 @@ class morestuffExtension {
     return args.ONE == args.TWO;
   }
   RootOf(args) {
-    return Math.pow(args.ROOT, 1,args.VALUE)
+    return Math.pow(args.ONE, 1,args.TWO)
   }
 }
 Scratch.extensions.register(new morestuffExtension());
