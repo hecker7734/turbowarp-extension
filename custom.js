@@ -70,7 +70,7 @@ class morestuffExtension {
           return negate ? -possible : possible;
       } catch(e){}
     }
-    return nthroot(args.ONE,args.TWO);
+    return nthroot(args.TWO,args.ONE);
   }
 }
 Scratch.extensions.register(new morestuffExtension());
