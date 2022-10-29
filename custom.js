@@ -49,7 +49,6 @@ class morestuffExtension {
             }
           }
         },
-        //Math.pow(2, 1/3)
       ]
     };
   }
