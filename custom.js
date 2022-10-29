@@ -71,7 +71,7 @@ class morestuffExtension {
           arguments: {
             ONE: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: ''
+              defaultValue: ' '
             },
           }
         },
