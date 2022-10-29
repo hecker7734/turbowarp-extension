@@ -49,6 +49,21 @@ class morestuffExtension {
             }
           }
         },
+        {
+          opcode: 'Exponent',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[ONE]^[TWO]',
+          arguments: {
+            ONE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '2'
+            },
+            TWO: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '2'
+            }
+          }
+        },
       ]
     };
   }
@@ -71,6 +86,9 @@ class morestuffExtension {
       } catch(e){}
     }
     return nthroot(args.TWO,args.ONE);
+  }
+  Exponent(args){
+    return Math.pow(args.ONE,args.TWO);
   }
 }
 Scratch.extensions.register(new morestuffExtension());
