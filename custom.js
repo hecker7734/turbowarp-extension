@@ -59,7 +59,7 @@ class morestuffExtension {
     return args.ONE == args.TWO;
   }
   RootOf(args) {
-    return Math.pow(args.ONE, 1,args.TWO)
+    return Math.pow(args.ONE, 1,args.TWO);
   }
 }
 Scratch.extensions.register(new morestuffExtension());
