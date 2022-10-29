@@ -37,13 +37,13 @@ class morestuffExtension {
         {
           opcode: 'RootOf',
           blockType: Scratch.BlockType.REPORTER,
-          text: '[ROOT]√[VALUE]',
+          text: '[ONE]√[TWO]',
           arguments: {
-            ROOT: {
+            ONE: {
               type: Scratch.ArgumentType.STRING,
               defaultValue: 'Root'
             },
-            VALUE: {
+            TWO: {
               type: Scratch.ArgumentType.STRING,
               defaultValue: 'VALUE'
             }
@@ -57,10 +57,10 @@ class morestuffExtension {
     return args.ONE === args.TWO;
   }
   LooslyEquals(args) {
-    return args.ROOT == args.VALUE;
+    return args.ONE == args.TWO;
   }
   RootOf(args) {
-    return Math.pow(args.TWO, 1,args.ONE)
+    return Math.pow(args.ROOT, 1,args.VALUE)
   }
 }
 Scratch.extensions.register(new morestuffExtension());
