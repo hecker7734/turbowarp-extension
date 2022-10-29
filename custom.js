@@ -33,7 +33,23 @@ class morestuffExtension {
               defaultValue: 'n'
             }
           }
-        }
+        },
+        {
+          opcode: 'RootOf',
+          blockType: Scratch.BlockType.REPORTER,
+          text: '[ROOT]√[VALUE]',
+          arguments: {
+            ROOT: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'Root'
+            },
+            VALUE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'VALUE'
+            }
+          }
+        },
+        //Math.pow(2, 1/3)
       ]
     };
   }
@@ -41,7 +57,10 @@ class morestuffExtension {
     return args.ONE === args.TWO;
   }
   LooslyEquals(args) {
-    return args.ONE == args.TWO;
+    return args.ROOT == args.VALUE;
+  }
+  RootOf(args) {
+    return Math.pow(args.TWO, 1,args.ONE)
   }
 }
 Scratch.extensions.register(new morestuffExtension());
