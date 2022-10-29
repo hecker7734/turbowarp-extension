@@ -41,7 +41,7 @@ class morestuffExtension {
     return args.ONE === args.TWO;
   }
   LooslyEquals(args) {
-    return args.ONE = args.TWO;
+    return args.ONE == args.TWO;
   }
 }
 Scratch.extensions.register(new morestuffExtension());
