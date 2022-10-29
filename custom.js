@@ -59,10 +59,18 @@ class morestuffExtension {
     return args.ONE == args.TWO;
   }
   RootOf(args) {
-    function root(v,n) {
-      return Math.pow(v,1/n);
+    function nthroot(x, n) {
+      try {
+        var negate = n % 2 == 1 && x < 0;
+        if(negate)
+          x = -x;
+        var possible = Math.pow(x, 1 / n);
+        n = Math.pow(possible, n);
+        if(Math.abs(x - n) < 1 && (x > 0 == n > 0))
+          return negate ? -possible : possible;
+      } catch(e){}
     }
-    return root(args.ONE,args.TWO);
+    return nthroot(args.ONE,args.TWO);
   }
 }
 Scratch.extensions.register(new morestuffExtension());
