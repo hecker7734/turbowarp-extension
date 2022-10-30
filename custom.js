@@ -97,6 +97,17 @@ class morestuffExtension {
             },
           }
         },
+        {
+          opcode: 'StringReverse',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'String.Reverse[ONE]',
+          arguments: {
+            ONE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ' '
+            },
+          }
+        },
       ]
     };
   }
@@ -140,6 +151,9 @@ class morestuffExtension {
       }
     }
     return newstr;
+  }
+  StringReverse(args){
+    return args.ONE.split("").reverse().join("");
   }
 }
 Scratch.extensions.register(new morestuffExtension());
