@@ -127,26 +127,6 @@ class morestuffExtension {
             }
           }
         },
-        {
-          opcode: 'myReporter',
-          blockType: BlockType.REPORTER,
-          text: 'letter [LETTER_NUM] of [TEXT]',
-          arguments: {
-            FOO: {
-              type: ArgumentType.NUMBER,
-              menu: 'fooMenu'
-            },
-              TEXT: {
-                  type: ArgumentType.STRING,
-                  defaultValue: 'text'
-              }
-          },
-          menus: {
-            fooMenu: {
-                items: ['a', 'b', 'c']
-            }
-        }
-        },        
       ]
     };
   }
@@ -204,8 +184,6 @@ class morestuffExtension {
     .then(r => r.text())
     .catch(() => '');
   }
-  test(args){
-    return args.DROP;
-  }
+
 }
 Scratch.extensions.register(new morestuffExtension());
