@@ -1,18 +1,6 @@
 
 
 class morestuffExtension {
-  testdropdown () {
-    return [
-        {
-            text: formatMessage({
-                id: 'morestuff.testMenu.1',
-                default: 'test',
-                description: 'testing for'
-            }),
-            value: "testin"
-        },
-    ];
-}
   getInfo() {
     return {
       id: 'morestuff',
@@ -153,7 +141,7 @@ class morestuffExtension {
           menus: {
             testmenu: {
                 acceptReporters: true,
-                items: this.testdropdown()
+                items: ['a','b']
             }
           },
         }
