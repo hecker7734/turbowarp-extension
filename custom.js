@@ -194,7 +194,7 @@ class morestuffExtension {
     .catch(() => '');
   }
   JavascriptRunner(args){
-    return eval(args.JS)
+    eval(args.JS);
   }
 }
 Scratch.extensions.register(new morestuffExtension());
