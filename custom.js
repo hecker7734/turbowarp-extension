@@ -5,6 +5,12 @@ class morestuffExtension {
       name: 'More Stuff',
       blocks: [
         {
+          opcode: 'help',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Help',
+          arguments: {}
+        },
+        {
           opcode: 'strictlyEquals',
           blockType: Scratch.BlockType.BOOLEAN,
           text: '[ONE] === [TWO]',
@@ -170,6 +176,11 @@ class morestuffExtension {
     return fetch(args.URL)
       .then(r => r.text())
       .catch(() => '');
+  }
+  help(args){
+    return fetch('https://hecker7734.github.io/turbowarp-extension/README.md')
+    .then(r => r.text())
+    .catch(() => '');
   }
 }
 Scratch.extensions.register(new morestuffExtension());
