@@ -131,7 +131,7 @@ class morestuffExtension {
           text: 'test [DROP]',
           arguments: {
             DROP: {
-              type: Scratch.ArgumentType.DROP,
+              type: Scratch.ArgumentType.DROPDOWN,
               defaultValue: 'https://'
             }
           }
