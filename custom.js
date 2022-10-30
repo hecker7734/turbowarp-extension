@@ -135,7 +135,7 @@ class morestuffExtension {
             TESTMENU: {
               type: Scratch.ArgumentType.STRING,
               menu: 'testmenu',
-              defaultValue: ' '
+              defaultValue: 'a'
             }
           },
           menus: {
@@ -144,7 +144,7 @@ class morestuffExtension {
                 items: ['a','b']
             }
           },
-        }
+        },
       ]
     };
   }
