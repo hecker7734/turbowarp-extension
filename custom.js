@@ -126,7 +126,7 @@ class morestuffExtension {
           }
         },
         {
-          pcode: 'test',
+          opcode: 'test',
           blockType: Scratch.BlockType.REPORTER,
           text: 'test [DROP]',
           arguments: {
