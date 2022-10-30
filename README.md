@@ -1,4 +1,4 @@
-# creating random stuff for turbro warp and stuff
+# More Stuff Extension 
 https://turbowarp.org/editor?extension=https://hecker7734.github.io/turbowarp-extension/custom.js
 
 ### Blocks here
