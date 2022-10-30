@@ -1,4 +1,18 @@
+
+
 class morestuffExtension {
+  testdropdown () {
+    return [
+        {
+            text: formatMessage({
+                id: 'morestuff.testMenu.1',
+                default: 'test',
+                description: 'testing for'
+            }),
+            value: "testin"
+        },
+    ];
+}
   getInfo() {
     return {
       id: 'morestuff',
@@ -128,13 +142,20 @@ class morestuffExtension {
         {
           opcode: 'test',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'test [DROP]',
+          text: 'test [TESTMENU]',
           arguments: {
-            DROP: {
-              type: Scratch.ArgumentType.DROPDOWN,
-              defaultValue: 'https://'
+            TESTMENU: {
+              type: Scratch.ArgumentType.STRING,
+              menu: 'testmenu',
+              defaultValue: ' '
             }
-          }
+          },
+          menus: {
+            testmenu: {
+                acceptReporters: true,
+                items: this.testdropdown()
+            }
+          },
         }
       ]
     };
