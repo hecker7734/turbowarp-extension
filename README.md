@@ -12,3 +12,4 @@ https://turbowarp.org/editor?extension=https://hecker7734.github.io/turbowarp-ex
  ()String.TeamTyper ( Every Other Letter Is Uppercase )  
  ()String.Reverse ( Reverses Entire String)  
  ()GET ( Gets A Files Content from a url )
+ []test ( W.I.P )
