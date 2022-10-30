@@ -125,17 +125,7 @@ class morestuffExtension {
             }
           }
         },
-        {
-          opcode: 'JavascriptRunner',
-          blockType: Scratch.BlockType.COMMAND,
-          text: 'Run Javascript [JS]',
-          arguments: {
-            JS: {
-              type: Scratch.ArgumentType.STRING,
-              defaultValue: ' '
-            }
-          }
-        },
+        
       ]
     };
   }
@@ -192,9 +182,6 @@ class morestuffExtension {
     return fetch('https://hecker7734.github.io/turbowarp-extension/README.md')
     .then(r => r.text())
     .catch(() => '');
-  }
-  JavascriptRunner(args){
-    eval(args.JS);
   }
 }
 Scratch.extensions.register(new morestuffExtension());
