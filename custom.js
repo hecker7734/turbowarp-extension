@@ -125,7 +125,17 @@ class morestuffExtension {
             }
           }
         },
-        
+        {
+          pcode: 'test',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'test [DROP]',
+          arguments: {
+            DROP: {
+              type: Scratch.ArgumentType.DROP,
+              defaultValue: 'https://'
+            }
+          }
+        }
       ]
     };
   }
@@ -182,6 +192,9 @@ class morestuffExtension {
     return fetch('https://hecker7734.github.io/turbowarp-extension/README.md')
     .then(r => r.text())
     .catch(() => '');
+  }
+  test(args){
+    return args.DROP;
   }
 }
 Scratch.extensions.register(new morestuffExtension());
