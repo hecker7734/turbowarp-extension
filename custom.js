@@ -128,23 +128,25 @@ class morestuffExtension {
           }
         },
         {
-          opcode: 'test',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'test [TESTMENU]',
+          opcode: 'myReporter',
+          blockType: BlockType.REPORTER,
+          text: 'letter [LETTER_NUM] of [TEXT]',
           arguments: {
-            TESTMENU: {
-              type: Scratch.ArgumentType.STRING,
-              menu: 'testmenu',
-              defaultValue: 'a'
-            }
+            FOO: {
+              type: ArgumentType.NUMBER,
+              menu: 'fooMenu'
+            },
+              TEXT: {
+                  type: ArgumentType.STRING,
+                  defaultValue: 'text'
+              }
           },
           menus: {
-            testmenu: {
-                acceptReporters: true,
-                items: ['a','b']
+            fooMenu: {
+                items: ['a', 'b', 'c']
             }
-          },
-        },
+        }
+        },        
       ]
     };
   }
