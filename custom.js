@@ -86,6 +86,17 @@ class morestuffExtension {
             },
           }
         },
+        {
+          opcode: 'TeamTyper',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'String.TeamTyper[ONE]',
+          arguments: {
+            ONE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ' '
+            },
+          }
+        },
       ]
     };
   }
@@ -117,6 +128,18 @@ class morestuffExtension {
   }
   LowerCase(args){
     return args.ONE.toLowerCase();
+  }
+  TeamTyper(args){
+    var newstr = "";
+    for (let i = 0; i < args.ONE.length; i++) {
+      const shoulddo = (i/2).toString().includes("."); //divide by 2, check for a decimal point
+      if (shoulddo) {
+        newstr += args.ONE.charAt(i).toUpperCase()
+      } else {
+        newstr += args.ONE.charAt(i).toLowerCase()
+      }
+    }
+    return newstr;
   }
 }
 Scratch.extensions.register(new morestuffExtension());
