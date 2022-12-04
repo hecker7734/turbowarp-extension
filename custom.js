@@ -117,6 +117,17 @@ class morestuffExtension {
           }
         },
         {
+          opcode: 'comb',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Combinations of [LIST]',
+          arguments: {
+            LIST: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ' '
+            },
+          }
+        },
+        {
           opcode: 'getfetch',
           blockType: Scratch.BlockType.REPORTER,
           text: 'GET [URL]',
@@ -184,6 +195,14 @@ class morestuffExtension {
     .then(r => r.text())
     .catch(() => '');
   }
-
+  comb(args){
+        var combs = []
+           for (let j = 0; j < args.LIST.length; j++) {
+              for (let i = 0; i < args.LIST.length; i++) {
+                 combs.push(args.LIST[i] + args.LIST[j]);
+            }
+        }
+        return combs;
+  }
 }
 Scratch.extensions.register(new morestuffExtension());
