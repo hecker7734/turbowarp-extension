@@ -117,6 +117,17 @@ class morestuffExtension {
           }
         },
         {
+          opcode: 'jsalert',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Javascript Alert : [MESSAGE]',
+          arguments: {
+            MESSAGE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ' '
+            },
+          }
+        },
+        {
           opcode: 'comb',
           blockType: Scratch.BlockType.REPORTER,
           text: 'Combinations of [LIST]',
@@ -213,6 +224,9 @@ class morestuffExtension {
             }
         }
         return combs;
+  }
+  jsalert(args){
+  alert(args.MESSAGE)
   }
 }
 Scratch.extensions.register(new morestuffExtension());
