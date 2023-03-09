@@ -136,13 +136,23 @@ class morestuffExtension {
               type: Scratch.ArgumentType.STRING,
               defaultValue: 'https://'
             }
-          }
+          },
+          {
+                opcode: 'example-noop',
+                blockType: Scratch.BlockType.COMMAND,
+                blockAllThreads: false,
+                text: 'do nothing',
+                func: 'noop'
+            },
         },
       ]
     };
   }
   strictlyEquals(args) {
     return args.ONE === args.TWO;
+  }
+  noop {
+  return "yesy"
   }
   LooslyEquals(args) {
     return args.ONE == args.TWO;
