@@ -152,7 +152,7 @@ class morestuffExtension {
         {
           opcode: 'regexSearcherCount',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Regex Search Pattern [PATTERN] Search String [STRING] And Return Count',
+          text: 'Regex Search Pattern [PATTERN] Search String [STRING] Should just return count [TF]',
           arguments: {
             STRING: {
               type: Scratch.ArgumentType.STRING,
@@ -161,10 +161,20 @@ class morestuffExtension {
             PATTERN: {
               type: Scratch.ArgumentType.STRING,
               defaultValue: '/apple/gi'
+            },
+            TF: {
+              type: Scratch.ArgumentType.BOOLEAN,
+              menu: 'TF_MENU'
             }
           }
         },
-      ]
+      ],
+      menus: {
+        TF_MENU: {
+          acceptReporters: false,
+          items: ['True', 'False']
+        }
+      }
     };
   }
   strictlyEquals(args) {
@@ -231,10 +241,15 @@ class morestuffExtension {
         return combs;
   }
   regexSearcherCount(args){
-    let patternString = args.PATTERN.slice(1, -2); // Remove leading and trailing slashes
+    let patternString = args.PATTERN.slice(1, -3); // Remove leading slash and flags
     let patternFlags = args.PATTERN.slice(-2); // Extract flags from the end
     let patternRegex = new RegExp(patternString, patternFlags);
-    let count = (args.STRING.match(patternRegex) || []).length;
+    let count
+    if ( args.TF ) {
+      count = (args.STRING.match(patternRegex) || []).length;
+    } else {
+      count = args.STRING.match(patternRegex)
+    }
     return count;
   }
 }
