@@ -231,11 +231,11 @@ class morestuffExtension {
         return combs;
   }
   regexSearcherCount(args){
-    let text = args.STRING;
-    let count = (text.match(args.PATTERN) || []).length;
-    return count
+    let patternString = args.PATTERN.slice(1, -2); // Remove leading and trailing slashes
+    let patternFlags = args.PATTERN.slice(-2); // Extract flags from the end
+    let patternRegex = new RegExp(patternString, patternFlags);
+    let count = (args.STRING.match(patternRegex) || []).length;
+    return count;
   }
 }
 Scratch.extensions.register(new morestuffExtension());
-
-
