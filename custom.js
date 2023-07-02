@@ -138,6 +138,21 @@ class morestuffExtension {
             }
           }
         },
+        {
+          opcode: 'regexSearcher',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Regex Search Pattern [PATTERN] Search String [STRING]',
+          arguments: {
+            STRING: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'apples are better then _apples_'
+            },
+            PATTERN: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: '/apple/'
+            }
+          }
+        },
       ]
     };
   }
@@ -203,6 +218,11 @@ class morestuffExtension {
             }
         }
         return combs;
+  }
+  regexSearcher(args){
+    let text = args.STRING;
+    let count = (text.match(args.PATTERN) || []).length;
+    console.log(count);
   }
 }
 Scratch.extensions.register(new morestuffExtension());
