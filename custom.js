@@ -160,7 +160,7 @@ class morestuffExtension {
             },
             PATTERN: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: '/apple/'
+              defaultValue: '/apple/gi'
             }
           }
         },
