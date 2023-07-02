@@ -163,8 +163,38 @@ class morestuffExtension {
               defaultValue: '/apple/gi'
             },
             TF: {
-              type: Scratch.ArgumentType.BOOLEAN,
+              type: Scratch.ArgumentType.STRING,
               menu: 'TF_MENU'
+            }
+          }
+        },
+        {
+          opcode: 'mathBlock',
+          blockType: Scratch.BlockType.REPORTER,
+          text:  'Preform Check Or Math On [One] [operation] [Two]',
+          arguments: {
+            One: {
+              type: Scratch.ArgumentType.NUMBER,
+              defaultValue: 'apples are better then _apples_'
+            },
+            Two: {
+              type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '/apple/gi'
+            },
+            operation: {
+              type: Scratch.ArgumentType.STRING,
+              menu: 'operation_MENU'
+            }
+          }
+        },
+        {
+          opcode: 'mathInterpret',
+          blockType: Scratch.BlockType.REPORTER,
+          text:  'Math Equation: [eq]',
+          arguments: {
+            eq: {
+              type: Scratch.ArgumentType.NUMBER,
+              defaultValue: '2*(1 + 2)'
             }
           }
         },
@@ -172,7 +202,11 @@ class morestuffExtension {
       menus: {
         TF_MENU: {
           acceptReporters: false,
-          items: [true, false]
+          items: ['True', 'False']
+        },
+        operation_MENU: {
+          acceptReporters: true,
+          items: ["+","-","/","*","==","===","+=","-=","/=","*=","^","√","%"]
         }
       }
     };
@@ -245,12 +279,87 @@ class morestuffExtension {
     let patternFlags = args.PATTERN.slice(-2); // Extract flags from the end
     let patternRegex = new RegExp(patternString, patternFlags);
     let count
-    if ( args.TF ) {
+    if ( args.TF == "True" ) {
       count = (args.STRING.match(patternRegex) || []).length;
     } else {
       count = args.STRING.match(patternRegex)
     }
     return count;
   }
+  mathBlock(args){
+   // Sanitize and validate the input numbers
+  let sanitizedOne = parseFloat(args.One);
+  let sanitizedTwo = parseFloat(args.Two);
+
+  if (isNaN(sanitizedOne) || isNaN(sanitizedTwo)) {
+    console.error('Invalid numbers provided.');
+    return null;
+  }
+
+  // Perform the arithmetic operation based on the operator
+  let result;
+
+  switch (args.operation) {
+    case '+':
+      result = sanitizedOne + sanitizedTwo;
+      break;
+    case '-':
+      result = sanitizedOne - sanitizedTwo;
+      break;
+    case '*':
+      result = sanitizedOne * sanitizedTwo;
+      break;
+    case '/':
+      result = sanitizedOne / sanitizedTwo;
+      break;
+    case '==':
+      result = sanitizedOne == sanitizedTwo;
+      break;
+    case '===':
+      result = sanitizedOne === sanitizedTwo;
+      break;
+    case '+=':
+      result = sanitizedOne += sanitizedTwo;
+      break;
+    case '-=':
+      result = sanitizedOne -= sanitizedTwo;
+      break;
+    case '*=':
+      result = sanitizedOne *= sanitizedTwo;
+      break;
+    case '/=':
+      result = sanitizedOne /= sanitizedTwo;
+      break;
+    case '^':
+      result = Math.pow(sanitizedOne, sanitizedTwo);
+      break;
+    case '√':
+      result = Math.sqrt(sanitizedOne);
+      break;
+    case '%':
+      result = sanitizedOne % sanitizedTwo;
+      break;
+    default:
+      return 'Invalid operator provided.';
+  }
+  return result;
+  }
+  mathInterpret(args){
+      // Sanitize the input expression to allow only allowed characters
+      const sanitizedExpression = args.eq.replace(/[^0-9+\-*/(). ]/g, '');
+      try {
+        const result = eval(sanitizedExpression);
+        return result;
+      } catch (error) {
+        return 'Error evaluating math expression:', error;
+      }
+    }
 }
+
 Scratch.extensions.register(new morestuffExtension());
+
+
+// Example usage
+const userInput = '2 + 3 * 4';
+const result = evaluateMathExpression(userInput);
+console.log(result); // Output: 14
