@@ -150,9 +150,9 @@ class morestuffExtension {
           },
         },
         {
-          opcode: 'regexSearcher',
+          opcode: 'regexSearcherCount',
           blockType: Scratch.BlockType.REPORTER,
-          text: 'Regex Search Pattern [PATTERN] Search String [STRING]',
+          text: 'Regex Search Pattern [PATTERN] Search String [STRING] And Return Count',
           arguments: {
             STRING: {
               type: Scratch.ArgumentType.STRING,
@@ -230,10 +230,12 @@ class morestuffExtension {
         }
         return combs;
   }
-  regexSearcher(args){
+  regexSearcherCount(args){
     let text = args.STRING;
     let count = (text.match(args.PATTERN) || []).length;
-    console.log(count);
+    return count
   }
 }
 Scratch.extensions.register(new morestuffExtension());
+
+
