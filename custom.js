@@ -198,6 +198,25 @@ class morestuffExtension {
             }
           }
         },
+        {
+          opcode: 'stringManipulator',
+          blockType: Scratch.BlockType.REPORTER,
+          text:  'String Manipulator base [SM] operation type [OPERATION_STRING] operation values [OPERATION_VALUES]',
+          arguments: {
+            SM: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ''
+            },
+            OPERATION_VALUES:{
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: 'string( a b c d e f g ) Replace ( [abc][bbb] ) return b b b e f g'
+            },
+            OPERATION_STRING:{
+              type: Scratch.ArgumentType.STRING,
+              menu: 'operation_string'
+            },
+          }
+        },
       ],
       menus: {
         TF_MENU: {
@@ -207,6 +226,10 @@ class morestuffExtension {
         operation_MENU: {
           acceptReporters: true,
           items: ["+","-","/","*","==","===","+=","-=","/=","*=","^","√","%"]
+        },
+        operation_string: {
+          acceptReporters: false,
+          items: ["length","reverse","uppercase","lowercase","Filter Substring","Replace ( op values )"]
         }
       }
     };
@@ -352,6 +375,41 @@ class morestuffExtension {
         return result;
       } catch (error) {
         return 'Error evaluating math expression:', error;
+      }
+    }
+
+    stringManipulator(args) {
+      const sm = args.SM || '';
+      const operationValues = args.OPERATION_VALUES || '';
+      const operationString = args.OPERATION_STRING || '';
+  
+      if (operationString === 'replace') {
+        const regex = /\[(.*?)\], \[(.*?)\]/;
+        const matches = operationValues.match(regex);
+  
+        if (matches && matches.length >= 3) {
+          const pattern = matches[1];
+          const flags = pattern.replace(/.*\/([gimy]*)$/, '$1');
+          const trimmedPattern = pattern.replace(new RegExp(`^/(.*?)/${flags}$`), '$1');
+          const replacement = matches[2];
+          const replacedStr = sm.replace(new RegExp(trimmedPattern, flags), replacement);
+          return replacedStr;
+        } else {
+          return 'Invalid replace pattern';
+        }
+      }
+  
+      switch (operationString) {
+        case 'length':
+          return sm.length;
+        case 'reverse':
+          return sm.split('').reverse().join('');
+        case 'uppercase':
+          return sm.toUpperCase();
+        case 'lowercase':
+          return sm.toLowerCase();
+        default:
+          return 'Invalid operation';
       }
     }
 }
