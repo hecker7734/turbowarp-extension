@@ -193,7 +193,7 @@ class morestuffExtension {
           text:  'Math Equation: [eq]',
           arguments: {
             eq: {
-              type: Scratch.ArgumentType.NUMBER,
+              type: Scratch.ArgumentType.STRING,
               defaultValue: '2*(1 + 2)'
             }
           }
@@ -355,11 +355,4 @@ class morestuffExtension {
       }
     }
 }
-
 Scratch.extensions.register(new morestuffExtension());
-
-
-// Example usage
-const userInput = '2 + 3 * 4';
-const result = evaluateMathExpression(userInput);
-console.log(result); // Output: 14
