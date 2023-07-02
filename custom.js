@@ -117,6 +117,17 @@ class morestuffExtension {
           }
         },
         {
+          opcode: 'jsalert',
+          blockType: Scratch.BlockType.REPORTER,
+          text: 'Javascript Alert : [MESSAGE]',
+          arguments: {
+            MESSAGE: {
+              type: Scratch.ArgumentType.STRING,
+              defaultValue: ' '
+            },
+          }
+        },
+        {
           opcode: 'comb',
           blockType: Scratch.BlockType.REPORTER,
           text: 'Combinations of [LIST]',
@@ -136,7 +147,7 @@ class morestuffExtension {
               type: Scratch.ArgumentType.STRING,
               defaultValue: 'https://'
             }
-          }
+          },
         },
         {
           opcode: 'regexSearcher',
