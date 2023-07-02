@@ -172,7 +172,7 @@ class morestuffExtension {
       menus: {
         TF_MENU: {
           acceptReporters: false,
-          items: ['True', 'False']
+          items: [true, false]
         }
       }
     };
