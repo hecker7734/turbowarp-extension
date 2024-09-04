@@ -1,5 +1,3 @@
-
-
 class morestuffExtension {
   getInfo() {
     return {
